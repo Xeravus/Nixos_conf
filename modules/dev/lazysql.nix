@@ -12,5 +12,12 @@
     environment.systemPackages = with pkgs; [
       lazysql
     ];
+    programs = {
+      zsh = {
+        shellAliases = {
+          sql = "lazysql";
+        };
+      };
+    };
   };
 }
