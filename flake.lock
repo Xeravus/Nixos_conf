@@ -280,6 +280,7 @@
       },
       "original": {
         "owner": "TheGoatPrime234",
+        "ref": "stable",
         "repo": "Nixos_programs",
         "type": "github"
       }
