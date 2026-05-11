@@ -15,7 +15,7 @@
     ./../../profiles/creative.nix
     ./../../profiles/gaming.nix
   ];
-
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
   networking.hostName = "xeravus";
   system.stateVersion = "25.11"; # Did you read the comment?
 }
