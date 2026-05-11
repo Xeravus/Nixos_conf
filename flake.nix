@@ -40,6 +40,27 @@
           ./hosts/xeravus/configuration.nix
         ];
       };
+      "vicuna-image" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {inherit inputs pkgs-25-11;};
+        modules = [
+          # Holt sich die Pi 5 spezifischen Treiber und Bootloader
+          inputs.nixos-hardware.nixosModules.raspberry-pi-5
+
+          # Das NixOS Basis-Modul zum Erstellen eines SD-Karten-Images
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+
+          # Deine fertige Server-Konfiguration!
+          ./hosts/vicuna/configuration.nix
+
+          # Ein paar kleine Anpassungen für den reibungslosen Bau
+          ({lib, ...}: {
+            nixpkgs.config.allowUnfree = true;
+            # Wir schalten ZFS ab, da es beim ARM-Kompilieren oft abstürzt
+            boot.supportedFilesystems = lib.mkForce ["vfat" "ext4"];
+          })
+        ];
+      };
     };
     colmena = {
       meta = {
