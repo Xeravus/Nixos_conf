@@ -9,6 +9,7 @@
       cava.enable = true;
       fastfetch.enable = true;
       gnome-keyring.enable = true;
+      gparted.enable = true;
       hypridle.enable = true;
       hyprland.enable = true;
       hyprlock.enable = true;

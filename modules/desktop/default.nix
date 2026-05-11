@@ -4,6 +4,7 @@
     ./cava.nix
     ./fastfetch.nix
     ./gnome-keyring.nix
+    ./gparted.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
