@@ -10,6 +10,7 @@
 
   config = lib.mkIf config.xanterella.xyy.enable {
     environment.systemPackages = with pkgs; [
+      xyy
     ];
     goon.enable = true;
   };

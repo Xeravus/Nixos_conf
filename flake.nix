@@ -53,11 +53,28 @@
           # Deine fertige Server-Konfiguration!
           ./hosts/vicuna/configuration.nix
 
-          # Ein paar kleine Anpassungen für den reibungslosen Bau
-          ({lib, ...}: {
+          ({
+            lib,
+            pkgs,
+            ...
+          }: {
             nixpkgs.config.allowUnfree = true;
-            # Wir schalten ZFS ab, da es beim ARM-Kompilieren oft abstürzt
-            boot.supportedFilesystems = lib.mkForce ["vfat" "ext4"];
+            boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
+
+            # WICHTIG: Erzwingt den RPi Vendor-Kernel.
+            # (In NixOS 24.11 deckt 'rpi4' auch den Raspberry Pi 5 ab!)
+            boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
+
+            boot.initrd.availableKernelModules = lib.mkForce [
+              "xhci_pci" # USB 3.0
+              "usb_storage" # USB-Sticks/Festplatten
+              "usbhid" # Tastatur/Maus
+              "sd_mod" # SD-Karten-Leser
+              "pcie_brcmstb" # Der PCIe-Controller des Raspberry Pi 5
+              "nvme" # Wichtig, falls du später eine NVMe-SSD an den Pi 5 hängst
+            ];
+
+            xanterella.boot.enable = lib.mkForce false;
           })
         ];
       };

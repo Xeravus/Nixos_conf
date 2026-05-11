@@ -22,11 +22,11 @@
   };
 
   # DEINE EXTERNE FESTPLATTE
-  # Hier musst du später die echte UUID mit 'lsblk -f' ermitteln
+  # Wir behalten den Namen /mnt/server-data, damit deine Services sie finden!
   fileSystems."/mnt/server-data" = {
-    device = "/dev/disk/by-uuid/HIER_DEINE_UUID_EINTRAGEN";
-    fsType = "ext4"; # oder ntfs-3g, btrfs, etc.
-    options = ["nofail" "defaults"]; # nofail verhindert Boot-Abstürze ohne Platte
+    device = "/dev/disk/by-uuid/1046B06546B04CEA";
+    fsType = "ntfs-3g";
+    options = ["nofail" "defaults"];
   };
 
   # Da der Pi 5 oft von SD-Karte oder NVMe bootet, ist Swap optional
