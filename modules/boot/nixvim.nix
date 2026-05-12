@@ -50,7 +50,7 @@
         }
         {
           mode = ["n"];
-          key = "<C-n>";
+          key = "<S-n>";
           action = "<cmd>Neotree toggle<CR>";
           options.desc = "Toggle Neo-Tree";
         }
@@ -94,8 +94,7 @@
         telescope = {
           enable = true;
           keymaps = {
-            "<leader>p" = "find_files";
-            "<leader>g" = "live_grep";
+            "<C-n>" = "find_files";
           };
         };
       };
