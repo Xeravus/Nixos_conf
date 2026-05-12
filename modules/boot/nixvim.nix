@@ -94,7 +94,7 @@
         telescope = {
           enable = true;
           keymaps = {
-            "<leader>p" = "finde_files";
+            "<leader>p" = "find_files";
             "<leader>g" = "live_grep";
           };
         };
