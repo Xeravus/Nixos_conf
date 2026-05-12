@@ -87,6 +87,12 @@
           config.allowUnfree = true;
           purity = "impure";
         };
+        nodeNixpkgs = {
+          vicuna = import nixpkgs {
+            system = "aarch64-linux";
+            config.allowUnfree = true;
+          };
+        };
         specialArgs = {inherit inputs pkgs-25-11;};
       };
       xeravus = {
@@ -132,10 +138,6 @@
               permissions = "0600";
             };
           };
-        };
-        nodeNixpkgs = import nixpkgs {
-          system = "aarch64-linux";
-          config.allowUnfree = true;
         };
         imports = [
           inputs.nixos-hardware.nixosModules.raspberry-pi-5
