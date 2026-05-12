@@ -29,6 +29,7 @@
           cl = "clear";
           f = "fastfetch";
           v = "nvim";
+          vim = "nvim";
           sv = "sudo nvim";
           za = "yazi";
         };
