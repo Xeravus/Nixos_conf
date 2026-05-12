@@ -142,6 +142,20 @@
         imports = [
           inputs.nixos-hardware.nixosModules.raspberry-pi-5
           ./hosts/vicuna/configuration.nix
+          ({
+            lib,
+            pkgs,
+            ...
+          }: {
+            # NTFS Support sicherstellen
+            boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
+
+            # Erzwingt den kompatiblen Raspberry Pi Kernel
+            boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
+
+            # Verhindert, dass dein Standard-Boot-Modul den Kernel wieder überschreibt
+            xanterella.boot.enable = lib.mkForce false;
+          })
         ];
       };
     };
