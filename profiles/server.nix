@@ -10,6 +10,7 @@
       pihole.enable = true;
       syncthing.enable = true;
       vaultwarden.enable = true;
+      fastfetch.enable = true;
     };
   };
 }
