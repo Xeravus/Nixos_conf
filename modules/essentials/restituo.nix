@@ -28,7 +28,9 @@
             echo "Rebuild erfolgreich und erfolgreich committet: $COMMIT_MSG" --a=nix-switcher
             notify-send "Rebuild erfolgreich: $COMMIT_MSG"
     fi
+    pkill nix-timetracker
     fastfetch
+    nix-timetracker daemon & disown
     echo ""
   '';
 in {
