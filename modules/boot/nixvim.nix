@@ -20,7 +20,6 @@
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
-
       opts = {
         number = true;
         relativenumber = true;
@@ -95,6 +94,19 @@
           enable = true;
           keymaps = {
             "<C-n>" = "find_files";
+          };
+          settings = {
+            defaults = {
+              file_ignore_patterns = [
+                "^.git/"
+                "%.lock"
+              ];
+            };
+            extensions = {
+              live-grep-args = {
+                enable = true;
+              };
+            };
           };
         };
       };
