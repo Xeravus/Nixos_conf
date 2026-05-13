@@ -79,6 +79,7 @@
         treesitter.enable = true;
         neo-tree.enable = true;
         bufferline.enable = true;
+        vim-be-good.enable = true;
         web-devicons.enable = true;
         conform-nvim = {
           settings = {
