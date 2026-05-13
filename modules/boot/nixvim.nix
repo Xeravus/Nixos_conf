@@ -92,6 +92,7 @@
         };
         telescope = {
           enable = true;
+          autoLoad = true;
           keymaps = {
             "<C-n>" = "find_files";
             "<A-f>" = "live_grep";
