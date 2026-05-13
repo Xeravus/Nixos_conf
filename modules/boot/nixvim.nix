@@ -49,12 +49,6 @@
           action = "<Nop>";
         }
         {
-          mode = ["n"];
-          key = "<S-n>";
-          action = "<cmd>Neotree toggle<CR>";
-          options.desc = "Toggle Neo-Tree";
-        }
-        {
           key = "<S-h>";
           action = "<cmd>bprevious<CR>";
           options.desc = "Vorheriger Tab";
