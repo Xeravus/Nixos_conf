@@ -14,6 +14,7 @@
 
   config = lib.mkIf config.xanterella.nixvim.enable {
     environment.systemPackages = with pkgs; [
+      ripgrep
       qt6.qtdeclarative
       kdePackages.qtdeclarative
     ];

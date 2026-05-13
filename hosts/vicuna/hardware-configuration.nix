@@ -9,29 +9,24 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  # Boot-Kernel-Module für USB-Speicher und SD-Karten
-  boot.initrd.availableKernelModules = ["xhci_pci" "usb_storage" "usbhid" "sd_mod"];
+  boot.initrd.availableKernelModules = [];
   boot.initrd.kernelModules = [];
   boot.kernelModules = [];
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
   boot.extraModulePackages = [];
+  boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
 
-  # Root-Dateisystem (Standard-Label für das generische NixOS ARM Image)
   fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXOS_SD";
+    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
     fsType = "ext4";
   };
 
-  # DEINE EXTERNE FESTPLATTE
-  # Wir behalten den Namen /mnt/server-data, damit deine Services sie finden!
-  fileSystems."/mnt/server-data" = {
-    device = "/dev/disk/by-uuid/1046B06546B04CEA";
-    fsType = "ntfs-3g";
-    options = ["nofail" "defaults"];
-  };
-
-  # Da der Pi 5 oft von SD-Karte oder NVMe bootet, ist Swap optional
   swapDevices = [];
 
-  # Architektur für den Raspberry Pi 5
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.end0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
+
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

@@ -105,15 +105,6 @@
           ./profiles/ssh-keys.nix
           inputs.nixos-hardware.nixosModules.raspberry-pi-5
           ./hosts/vicuna/configuration.nix
-          ({
-            lib,
-            pkgs,
-            ...
-          }: {
-            boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
-            boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
-            xanterella.boot.enable = lib.mkForce false;
-          })
         ];
       };
     };
