@@ -31,6 +31,21 @@
       system = systemarch;
       config.allowUnfree = true;
     };
+    commonSSHKeys = {
+      "id_ed25519" = {
+        keyFile = "/home/cato/.ssh/id_ed25519";
+        destDir = "/etc/ssh";
+        user = "root";
+        group = "root";
+        permissions = "0600";
+      };
+      "github_key" = {
+        keyFile = "/home/cato/.ssh/id_github";
+        destDir = "/root/.ssh";
+        user = "root";
+        permissions = "0600";
+      };
+    };
   in {
     nixosConfigurations = {
       xeravus = nixpkgs.lib.nixosSystem {
@@ -44,13 +59,8 @@
         system = "aarch64-linux";
         specialArgs = {inherit inputs pkgs-25-11;};
         modules = [
-          # Holt sich die Pi 5 spezifischen Treiber und Bootloader
           inputs.nixos-hardware.nixosModules.raspberry-pi-5
-
-          # Das NixOS Basis-Modul zum Erstellen eines SD-Karten-Images
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-
-          # Deine fertige Server-Konfiguration!
           ./hosts/vicuna/configuration.nix
 
           ({
@@ -60,11 +70,7 @@
           }: {
             nixpkgs.config.allowUnfree = true;
             boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
-
-            # WICHTIG: Erzwingt den RPi Vendor-Kernel.
-            # (In NixOS 24.11 deckt 'rpi4' auch den Raspberry Pi 5 ab!)
             boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
-
             boot.initrd.availableKernelModules = lib.mkForce [
               "xhci_pci" # USB 3.0
               "usb_storage" # USB-Sticks/Festplatten
@@ -102,6 +108,7 @@
           buildOnTarget = true;
         };
         imports = [
+          ./profiles/ssh-keys.nix
           ./hosts/xeravus/configuration.nix
         ];
       };
@@ -110,17 +117,10 @@
           targetHost = "192.168.178.69";
           targetUser = taruser;
           buildOnTarget = false;
-          keys = {
-            "id_ed25519" = {
-              keyFile = "/home/cato/.ssh/id_ed25519";
-              destDir = "/etc/ssh";
-              user = "root";
-              group = "root";
-              permissions = "0600";
-            };
-          };
+          keys = commonSSHKeys;
         };
         imports = [
+          ./profiles/ssh-keys.nix
           ./hosts/xorus/configuration.nix
         ];
       };
@@ -129,17 +129,10 @@
           targetHost = "192.168.178.30";
           targetUser = taruser;
           buildOnTarget = false;
-          keys = {
-            "id_ed25519" = {
-              keyFile = "/home/cato/.ssh/id_ed25519";
-              destDir = "/etc/ssh";
-              user = "root";
-              group = "root";
-              permissions = "0600";
-            };
-          };
+          keys = commonSSHKeys;
         };
         imports = [
+          ./profiles/ssh-keys.nix
           inputs.nixos-hardware.nixosModules.raspberry-pi-5
           ./hosts/vicuna/configuration.nix
           ({
@@ -147,13 +140,8 @@
             pkgs,
             ...
           }: {
-            # NTFS Support sicherstellen
             boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
-
-            # Erzwingt den kompatiblen Raspberry Pi Kernel
             boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
-
-            # Verhindert, dass dein Standard-Boot-Modul den Kernel wieder überschreibt
             xanterella.boot.enable = lib.mkForce false;
           })
         ];
