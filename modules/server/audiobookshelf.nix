@@ -29,7 +29,7 @@
         openFirewall = true;
         dataDir = "/mnt/server-data/nix/audiobookshelf/metadata";
       };
-    }
+    };
     networking = {
       firewall = {
         allowedTCPPorts = [
