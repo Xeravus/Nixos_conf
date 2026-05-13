@@ -55,36 +55,6 @@
           ./hosts/xeravus/configuration.nix
         ];
       };
-      "vicuna-image" = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = {inherit inputs pkgs-25-11;};
-        modules = [
-          inputs.nixos-hardware.nixosModules.raspberry-pi-5
-          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ./hosts/vicuna/configuration.nix
-
-          ({
-            lib,
-            pkgs,
-            ...
-          }: {
-            nixpkgs.config.allowUnfree = true;
-            boot.supportedFilesystems = lib.mkForce ["vfat" "ext4" "ntfs3" "ntfs-3g"];
-            boot.kernelPackages = lib.mkForce pkgs.linuxPackages_rpi4;
-            boot.initrd.availableKernelModules = lib.mkForce [
-              "xhci_pci" # USB 3.0
-              "usb_storage" # USB-Sticks/Festplatten
-              "usbhid" # Tastatur/Maus
-              "sd_mod" # SD-Karten-Leser
-              "pcie_brcmstb" # Der PCIe-Controller des Raspberry Pi 5
-              "nvme" # Wichtig, falls du später eine NVMe-SSD an den Pi 5 hängst
-            ];
-            sdImage.firmwareSize = 1024;
-
-            xanterella.boot.enable = lib.mkForce false;
-          })
-        ];
-      };
     };
     colmena = {
       meta = {
