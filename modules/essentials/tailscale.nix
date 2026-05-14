@@ -16,6 +16,20 @@
       tailscale = {
         enable = true;
       };
+      resolved = {
+        enable = true;
+      };
+    };
+    networking = {
+      nameservers = [
+        "100.100.100.100"
+        "1.1.1.1"
+        "1.0.0.1"
+        "8.8.8.8"
+      ];
+      search = [
+        "gute-nessie.ts.net"
+      ];
     };
   };
 }
