@@ -26,6 +26,15 @@
         openFirewall = true;
       };
     };
+    systemd = {
+      services = {
+        audiobookshelf = {
+          environment = {
+            ROUTER_BASE_PATH = "/audiobookshelf";
+          };
+        };
+      };
+    };
     networking = {
       firewall = {
         allowedTCPPorts = [
