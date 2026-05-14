@@ -2,11 +2,11 @@
   config,
   pkgs,
   lib,
-  pkgs-25-11,
+  pkgs-new,
   inputs,
   ...
 }: let
-  pomo = pkgs-25-11.buildGoModule {
+  pomo = pkgs-new.buildGoModule {
     pname = "pomo";
     version = "latest";
     src = inputs.pomo-src;

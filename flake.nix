@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-25-11.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-new.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-programs.url = "github:TheGoatPrime234/Nixos_programs/stable";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
@@ -31,11 +32,15 @@
     ...
   } @ inputs: let
     systemarch = "x86_64-linux";
-    taruser = "root";
-    pkgs-25-11 = import inputs.nixpkgs-25-11 {
+    pkgs-new = import inputs.nixpkgs-new {
       system = systemarch;
       config.allowUnfree = true;
     };
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      system = systemarch;
+      config.allowUnfree = true;
+    };
+    taruser = "root";
     commonSSHKeys = {
       "id_ed25519" = {
         keyFile = "/home/cato/.ssh/id_ed25519";
@@ -55,7 +60,7 @@
     nixosConfigurations = {
       xeravus = nixpkgs.lib.nixosSystem {
         system = systemarch;
-        specialArgs = {inherit inputs pkgs-25-11;};
+        specialArgs = {inherit inputs pkgs-new;};
         modules = [
           ./hosts/xeravus/configuration.nix
         ];
@@ -74,7 +79,7 @@
             config.allowUnfree = true;
           };
         };
-        specialArgs = {inherit inputs pkgs-25-11;};
+        specialArgs = {inherit inputs pkgs-new;};
       };
       xeravus = {
         deployment = {

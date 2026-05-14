@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  pkgs-25-11,
+  pkgs-new,
   ...
 }: {
   options = {
@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.xanterella.colmena.enable {
-    environment.systemPackages = with pkgs-25-11; [
+    environment.systemPackages = with pkgs-new; [
       colmena
       nix-output-monitor
     ];
