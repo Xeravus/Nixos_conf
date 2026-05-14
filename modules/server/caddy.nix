@@ -23,6 +23,9 @@
           };
         };
       };
+      tailscale = {
+        permitCertUid = "caddy";
+      };
     };
   };
 }
