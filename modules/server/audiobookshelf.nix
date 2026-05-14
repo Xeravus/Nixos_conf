@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-unstable,
   ...
 }: {
   options = {
@@ -9,7 +10,7 @@
   };
 
   config = lib.mkIf config.xanterella.audiobookshelf.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs-unstable; [
       audiobookshelf
     ];
     fileSystems."/var/lib/audiobookshelf" = {

@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  pkgs-new,
+  pkgs-unstable,
   ...
 }: {
   options = {
@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.xanterella.vaultwarden.enable {
-    environment.systemPackages = with pkgs-new; [
+    environment.systemPackages = with pkgs-unstable; [
       vaultwarden
     ];
     systemd = {

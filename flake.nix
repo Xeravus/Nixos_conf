@@ -60,7 +60,7 @@
     nixosConfigurations = {
       xeravus = nixpkgs.lib.nixosSystem {
         system = systemarch;
-        specialArgs = {inherit inputs pkgs-new;};
+        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
         modules = [
           ./hosts/xeravus/configuration.nix
         ];
@@ -79,7 +79,7 @@
             config.allowUnfree = true;
           };
         };
-        specialArgs = {inherit inputs pkgs-new;};
+        specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
       };
       xeravus = {
         deployment = {
