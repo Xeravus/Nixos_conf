@@ -6,6 +6,7 @@
   config = {
     xanterella = {
       lazysql.enable = true;
+      nix-review.enable = true;
       vimgolf.enable = true;
     };
   };
