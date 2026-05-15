@@ -33,6 +33,7 @@
           vim = "nvim";
           sv = "sudo nvim";
           za = "yazi";
+          nix-pr = "nixpkgs-review pr --print-result";
         };
         interactiveShellInit = ''
                               ZSH_CACHE_DIR="$HOME/.cache/zsh"
