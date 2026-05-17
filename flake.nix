@@ -2,17 +2,47 @@
   description = "Meine NixOs Systeme";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-new.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nix-programs.url = "github:TheGoatPrime234/Nixos_programs/stable";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
-    alejandra.url = "github:kamadorueda/alejandra/4.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
-    colmena.url = "github:zhaofengli/colmena";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-24.11";
+      flake = true;
+    };
+    nixpkgs-new = {
+      url = "github:nixos/nixpkgs/nixos-25.11";
+      flake = true;
+    };
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
+      flake = true;
+    };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      flake = true;
+    };
+    nix-programs = {
+      url = "github:TheGoatPrime234/Nixos_programs/stable";
+      flake = true;
+    };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      flake = true;
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      flake = true;
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.11";
+      flake = true;
+    };
+    alejandra = {
+      url = "github:kamadorueda/alejandra/4.0.0";
+      flake = true;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      flake = true;
+    };
     p10k-src = {
       url = "github:romkatv/powerlevel10k";
       flake = false;
