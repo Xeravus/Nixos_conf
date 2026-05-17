@@ -19,6 +19,7 @@
           "root"
           "cato"
         ];
+        auto-optimise-store = true;
       };
     };
     nixpkgs = {
