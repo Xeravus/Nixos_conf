@@ -18,6 +18,7 @@
     ./pomodoro.nix
     ./pulsemixer.nix
     ./quickshell.nix
+    ./tldr.nix
     ./screenshots.nix
     ./sddm.nix
     ./spicetify.nix
