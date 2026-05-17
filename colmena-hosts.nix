@@ -14,7 +14,7 @@
       purity = "impure";
     };
     nodeNixpkgs = {
-      vicuna = import nixpkgs {
+      vicuna = import inputs.nixpkgs {
         system = "aarch64-linux";
         config.allowUnfree = true;
       };
