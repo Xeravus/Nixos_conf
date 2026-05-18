@@ -1,5 +1,6 @@
 {
   imports = [
+    ./agenix.nix
     ./boot.nix
     ./boot-server.nix
     ./colmena.nix

@@ -5,6 +5,7 @@
 }: {
   config = {
     xanterella = {
+      agenix.enable = true;
       boot.enable = true;
       colmena.enable = true;
       git.enable = true;
