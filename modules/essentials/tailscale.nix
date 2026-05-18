@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    xanterella.tailscale.enable = lib.mkEnableOption "Aktiviert xyy";
+    xanterella.tailscale.enable = lib.mkEnableOption "Aktiviert tailscale";
   };
 
   config = lib.mkIf config.xanterella.tailscale.enable {

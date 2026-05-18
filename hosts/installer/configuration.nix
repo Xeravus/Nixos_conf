@@ -3,7 +3,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  secrets = import ./../../modules/agenix/usb-secrets.nix;
+in {
   imports = [
     "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
   ];
@@ -12,8 +14,16 @@
   };
 
   networking = {
-    networkManager = {
+    wireless = {
       enable = true;
+      networks = {
+        "${secrets.wifiSsid}" = {
+          psk = secrets.wifiPassword;
+        };
+      };
+    };
+    networkmanager = {
+      enable = false;
     };
   };
 
@@ -23,6 +33,9 @@
       settings = {
         PermitRootLogin = "yes";
       };
+    };
+    tailscale = {
+      enable = true;
     };
   };
 
@@ -50,7 +63,7 @@
           sleep 1
           done
 
-          ${pkgs.tailscale}/bin/tailscale up --authkey="tskey-auth-ky2tsoWjpZ11CNTRL-MGcuN6WPCVjM1DkUL3FHWjcBMWarHwUz" --unattended
+          ${pkgs.tailscale}/bin/tailscale up --authkey="${secrets.tailscalekey}" --unattended
         '';
       };
     };

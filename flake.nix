@@ -39,6 +39,10 @@
       flake = true;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      flake = true;
+    };
     colmena = {
       url = "github:zhaofengli/colmena";
       flake = true;
