@@ -95,6 +95,14 @@
           ./hosts/xeravus/configuration.nix
         ];
       };
+      installer = nixpkgs.lib.nixosSystem {
+        system = systemarch;
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/installer/configuration.nix
+          ./profiles/ssh-keys.nix
+        ];
+      };
     };
     colmena = import ./colmena-hosts.nix {
       inherit inputs systemarch taruser commonSSHKeys pkgs-new pkgs-unstable;

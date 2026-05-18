@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-new,
   inputs,
   ...
 }: {
@@ -18,103 +19,113 @@
       qt6.qtdeclarative
       kdePackages.qtdeclarative
     ];
-    programs.nixvim = {
-      enable = true;
-      defaultEditor = true;
-      opts = {
-        number = true;
-        relativenumber = true;
-        termguicolors = true;
-        shiftwidth = 4;
-      };
-      keymaps = [
-        {
-          mode = ["n" "i" "v"];
-          key = "<Up>";
-          action = "<Nop>";
-        }
-        {
-          mode = ["n" "i" "v"];
-          key = "<Down>";
-          action = "<Nop>";
-        }
-        {
-          mode = ["n" "i" "v"];
-          key = "<Left>";
-          action = "<Nop>";
-        }
-        {
-          mode = ["n" "i" "v"];
-          key = "<Right>";
-          action = "<Nop>";
-        }
-        {
-          key = "<S-h>";
-          action = "<cmd>bprevious<CR>";
-          options.desc = "Vorheriger Tab";
-        }
-        {
-          key = "<S-l>";
-          action = "<cmd>bnext<CR>";
-          options.desc = "Nächster Tab";
-        }
-        {
-          key = "<leader>x";
-          action = "<cmd>bdelete<CR>";
-          options.desc = "Aktuellen Tab schließen";
-        }
-      ];
-
-      colorschemes.catppuccin.enable = true;
-      colorschemes.catppuccin.autoLoad = true;
-
-      plugins = {
-        lualine.enable = true;
-        treesitter.enable = true;
-        neo-tree.enable = true;
-        bufferline.enable = true;
-        vim-be-good.enable = true;
-        hardtime.enable = true;
-        highlight-colors.enable = true;
-        neogit.enable = true;
-        gitsigns.enable = true;
-        lazygit.enable = true;
-        web-devicons.enable = true;
-        conform-nvim = {
-          settings = {
-            format_on_save = {
-              lsp_fallback = true;
-              timeout_ms = 500;
-            };
-            formatters_by_ft = {
-              qml = ["qmlformat"];
-            };
-          };
+    programs = {
+      nixvim = {
+        enable = true;
+        defaultEditor = true;
+        opts = {
+          number = true;
+          relativenumber = true;
+          termguicolors = true;
+          shiftwidth = 4;
         };
-        telescope = {
-          enable = true;
-          autoLoad = true;
-          keymaps = {
-            "<C-n>" = "find_files";
-            "<A-f>" = "live_grep";
-          };
-          settings = {
-            defaults = {
-              file_ignore_patterns = [
-                "^.git/"
-                "%.lock"
-              ];
-            };
-            extensions = {
-              live-grep-args = {
-                enable = true;
+        keymaps = [
+          {
+            mode = ["n" "i" "v"];
+            key = "<Up>";
+            action = "<Nop>";
+          }
+          {
+            mode = ["n" "i" "v"];
+            key = "<Down>";
+            action = "<Nop>";
+          }
+          {
+            mode = ["n" "i" "v"];
+            key = "<Left>";
+            action = "<Nop>";
+          }
+          {
+            mode = ["n" "i" "v"];
+            key = "<Right>";
+            action = "<Nop>";
+          }
+          {
+            key = "<S-h>";
+            action = "<cmd>bprevious<CR>";
+            options.desc = "Vorheriger Tab";
+          }
+          {
+            key = "<S-l>";
+            action = "<cmd>bnext<CR>";
+            options.desc = "Nächster Tab";
+          }
+          {
+            key = "<leader>x";
+            action = "<cmd>bdelete<CR>";
+            options.desc = "Aktuellen Tab schließen";
+          }
+        ];
+
+        colorschemes.catppuccin.enable = true;
+        colorschemes.catppuccin.autoLoad = true;
+
+        plugins = {
+          lualine.enable = true;
+          treesitter.enable = true;
+          neo-tree.enable = true;
+          bufferline.enable = true;
+          vim-be-good.enable = true;
+          hardtime.enable = true;
+          highlight-colors.enable = true;
+          neogit.enable = true;
+          gitsigns.enable = true;
+          lazygit.enable = true;
+          web-devicons.enable = true;
+          conform-nvim = {
+            settings = {
+              format_on_save = {
+                lsp_fallback = true;
+                timeout_ms = 500;
               };
-              file-browser = {
-                enable = true;
+              formatters_by_ft = {
+                qml = [
+                  "qmlformat"
+                ];
+                nix = [
+                  "alejandra"
+                ];
               };
             };
           };
+          telescope = {
+            enable = true;
+            autoLoad = true;
+            keymaps = {
+              "<C-n>" = "find_files";
+              "<A-f>" = "live_grep";
+            };
+            settings = {
+              defaults = {
+                file_ignore_patterns = [
+                  "^.git/"
+                  "%.lock"
+                ];
+              };
+              extensions = {
+                live-grep-args = {
+                  enable = true;
+                };
+                file-browser = {
+                  enable = true;
+                };
+              };
+            };
+          };
         };
+        extraPackages = with pkgs-new; [
+          alejandra
+        ];
       };
     };
   };

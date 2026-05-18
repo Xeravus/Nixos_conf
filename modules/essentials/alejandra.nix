@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-new,
   inputs,
   ...
 }: {
@@ -10,7 +11,7 @@
   };
 
   config = lib.mkIf config.xanterella.alejandra.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs-new; [
       inputs.alejandra.defaultPackage.${pkgs.system}
     ];
   };

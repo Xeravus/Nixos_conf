@@ -28,8 +28,8 @@
       buildOnTarget = true;
     };
     imports = [
-      ./profiles/ssh-keys.nix
       ./hosts/xeravus/configuration.nix
+      ./profiles/ssh-keys.nix
     ];
   };
   xorus = {
@@ -40,8 +40,8 @@
       keys = commonSSHKeys;
     };
     imports = [
-      ./profiles/ssh-keys.nix
       ./hosts/xorus/configuration.nix
+      ./profiles/ssh-keys.nix
     ];
   };
   megatron = {
@@ -64,9 +64,9 @@
       keys = commonSSHKeys;
     };
     imports = [
+      ./hosts/vicuna/configuration.nix
       ./profiles/ssh-keys.nix
       inputs.nixos-hardware.nixosModules.raspberry-pi-5
-      ./hosts/vicuna/configuration.nix
     ];
   };
 }
