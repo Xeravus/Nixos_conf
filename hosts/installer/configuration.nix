@@ -35,6 +35,7 @@ in {
               ssid = secrets.wifiSsid;
             };
             wifi-security = {
+              auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = secrets.wifiPassword;
             };
