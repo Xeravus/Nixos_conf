@@ -1,28 +1,23 @@
 {
   imports = [
+    ./hyprland
+    ./gnome
     ./ani-cli.nix
     ./cava.nix
     ./fastfetch.nix
-    ./gnome-keyring.nix
     ./gparted.nix
-    ./hypridle.nix
-    ./hyprland.nix
-    ./hyprlock.nix
-    ./hyprpaper.nix
-    ./hyprpicker.nix
     ./kitty.nix
     ./nitch.nix
     ./nix-switcher.nix
     ./nix-timetracker.nix
     ./plymouth.nix
     ./pomodoro.nix
+    ./power-profiles-daemon.nix
     ./psmisc.nix
     ./pulsemixer.nix
     ./quickshell.nix
     ./screenshots.nix
-    ./sddm.nix
     ./spicetify.nix
-    ./swww.nix
     ./tldr.nix
     ./yazi.nix
     ./zen-browser.nix

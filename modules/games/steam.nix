@@ -5,13 +5,19 @@
   ...
 }: {
   options = {
-    xanterella.steam.enable = lib.mkEnableOption "Aktiviert steam";
+    xanterella = {
+      steam = {
+        enable = lib.mkEnableOption "Aktiviert steam";
+      };
+    };
   };
 
   config = lib.mkIf config.xanterella.steam.enable {
-    environment.systemPackages = with pkgs; [
-      steam
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        steam
+      ];
+    };
     programs = {
       steam = {
         enable = true;
@@ -21,8 +27,10 @@
       };
     };
 
-    environment.sessionVariables = {
-      STEAM_EXTRA_COMPACT_TOOLS_PATH = "/home/cato/.steam/root/compatibilitytools.d";
+    environment = {
+      sessionVariables = {
+        STEAM_EXTRA_COMPACT_TOOLS_PATH = "/home/cato/.steam/root/compatibilitytools.d";
+      };
     };
   };
 }

@@ -8,8 +8,9 @@
     ./../../modules
     ./../../profiles/boot.nix
     ./../../profiles/essentials.nix
+    ./../../profiles/desktop.nix
+    ./../../profiles/gnome.nix
     ./../../profiles/dev.nix
-    ./../../profiles/hyprland.nix
     ./../../profiles/vault.nix
   ];
 
