@@ -9,6 +9,7 @@
     ./network.nix
     ./nix.nix
     ./nixvim.nix
+    ./remote-install.nix
     ./ssh.nix
   ];
 }

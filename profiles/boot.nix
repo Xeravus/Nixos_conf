@@ -6,6 +6,7 @@
   config = {
     xanterella = {
       agenix.enable = true;
+      remote-install.enable = true;
       boot.enable = true;
       colmena.enable = true;
       git.enable = true;
