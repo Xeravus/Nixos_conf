@@ -33,6 +33,7 @@
           isNormalUser = true;
           description = "Cato";
           extraGroups = ["networkmanager" "wheel"];
+          initialPassword = "xeravus";
         };
       };
     };
