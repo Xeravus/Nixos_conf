@@ -9,6 +9,7 @@
     ./../../profiles/boot.nix
     ./../../profiles/essentials.nix
     ./../../profiles/desktop.nix
+    ./../../profiles/gnome.nix
     ./disko.nix
   ];
   networking.hostName = "crylia";
