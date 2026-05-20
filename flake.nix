@@ -116,6 +116,8 @@
         system = systemarch;
         specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
         modules = [
+          inputs.disko.nixosModules.disko
+          ./modules/boot/disko.nix
           ./hosts/willma/configuration.nix
           ./profiles/ssh-keys.nix
         ];
