@@ -14,12 +14,14 @@
 
     TARGET_IP=$1
 
+    cd
+    cd nixos-config
     echo "Starte Installation auf $TARGET_IP..."
     ssh root@$TARGET_IP 'echo "unsetopt nomatch" > ~/.zshenv'
-    ssh root@$TARGET_IP 'notify-send "Starte Remote-Install"'
     notify-send "Starte Remote-Install"
     sleep 3
     nix run github:numtide/nixos-anywhere -- --flake .#crylia root@$TARGET_IP
+    notify-send "Beendet Remote-Install"
   '';
 in {
   options.xanterella.remote-install = {
