@@ -35,6 +35,11 @@
           firefox
         ];
       };
+      programs = {
+        firefox = {
+          enable = true;
+        };
+      };
     })
     (lib.mkIf config.xanterella.browser.librewolf.enable {
       environment = {
