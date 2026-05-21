@@ -15,7 +15,7 @@
   config = lib.mkIf config.xanterella.reddit.enable {
     environment = {
       systemPackages = with pkgs-unstable; [
-        firefox
+        reddit-tui
       ];
     };
   };
