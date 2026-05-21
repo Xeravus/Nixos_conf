@@ -16,7 +16,6 @@
       screenshots.enable = true;
       sddm.enable = true;
       swww.enable = true;
-      zen-browser.enable = true;
     };
   };
 }

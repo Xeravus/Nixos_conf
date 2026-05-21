@@ -24,6 +24,17 @@
         ani-cli = {
           enable = true;
         };
+        browser = {
+          zen = {
+            enable = true;
+          };
+          firefox = {
+            enable = true;
+          };
+          librewolf = {
+            enable = true;
+          };
+        };
         fastfetch = {
           enable = true;
         };
@@ -46,6 +57,11 @@
     })
     (lib.mkIf config.xanterella.apps-xorus.enable {
       xanterella = {
+        browser = {
+          librewolf = {
+            enable = true;
+          };
+        };
         fastfetch = {
           enable = true;
         };
@@ -64,6 +80,11 @@
       xanterella = {
         fastfetch = {
           enable = true;
+        };
+        browser = {
+          librewolf = {
+            enable = true;
+          };
         };
       };
     })

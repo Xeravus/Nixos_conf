@@ -2,6 +2,7 @@
   imports = [
     ./hyprland
     ./gnome
+    ./browser.nix
     ./cava.nix
     ./kitty.nix
     ./nix-switcher.nix
@@ -14,6 +15,5 @@
     ./screenshots.nix
     ./tldr.nix
     ./yazi.nix
-    ./zen-browser.nix
   ];
 }
