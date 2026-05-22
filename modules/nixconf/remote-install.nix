@@ -6,14 +6,8 @@
 }: let
   cfg = config.xanterella.remote-install;
   remote-install = pkgs.writeShellScriptBin "remote-install" ''
-    if [ -z "$1" ]; then
-      echo "Fehler: Bitte die Tailscale-IP des USB-Sticks angeben!"
-      echo "Benutzung: ./install-remote.sh 100.x.y.z"
-      exit 1
-    fi
-
-    TARGET_IP=$1
-
+    tailscale status | grep tagged-devices
+    read TARGET_IP
     cd
     cd nixos-config
     echo "Starte Installation auf $TARGET_IP..."
