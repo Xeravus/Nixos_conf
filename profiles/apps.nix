@@ -35,6 +35,9 @@
             enable = true;
           };
         };
+        brightnessctl = {
+          enable = true;
+        };
         fastfetch = {
           enable = true;
         };
