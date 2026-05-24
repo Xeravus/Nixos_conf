@@ -4,19 +4,20 @@
   lib,
   inputs,
   pkgs-new,
+  pkgs-unstable,
   ...
 }: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   spotify-fix = pkgs.symlinkJoin {
     name = "spotify-fix";
     pname = "spotify";
-    version = pkgs.spotify.version;
-    meta = pkgs.spotify.meta;
+    version = pkgs-unstable.spotify.version;
+    meta = pkgs-unstable.spotify.meta;
     paths = [
-      pkgs.spotify
+      pkgs-unstable.spotify
     ];
     buildInputs = [
-      pkgs.makeWrapper
+      pkgs-unstable.makeWrapper
     ];
     postBuild = ''
       wrapProgram $out/bin/spotify \

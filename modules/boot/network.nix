@@ -20,6 +20,9 @@ in {
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.network.enable {
       networking = {
+        wireless = {
+          enable = false;
+        };
         networkmanager = {
           enable = true;
           insertNameservers = [
