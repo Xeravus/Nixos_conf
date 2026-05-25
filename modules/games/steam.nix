@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  pkgs-unstable,
   ...
 }: {
   options = {
@@ -24,6 +25,9 @@
         gamescopeSession = {
           enable = true;
         };
+        extraCompatPackages = with pkgs-unstable; [
+          proton-ge-bin
+        ];
       };
     };
 
