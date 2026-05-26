@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./../crylia/disko.nix
     ./../../modules
     ./../../profiles/boot.nix
     ./../../profiles/essentials.nix
