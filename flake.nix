@@ -105,6 +105,7 @@
         system = systemarch;
         specialArgs = {inherit inputs pkgs-new pkgs-unstable;};
         modules = [
+          inputs.disko.nixosModules.disko
           ./hosts/xeravus/configuration.nix
         ];
       };
