@@ -33,7 +33,6 @@
           enable = true;
           startWhenNeeded = true;
           settings = {
-            PermitRootLogin = "yes";
             UseDns = true;
           };
           authorizedKeysFiles = lib.mkForce [
