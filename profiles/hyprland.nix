@@ -32,6 +32,9 @@
       screenshots = {
         enable = true;
       };
+      soomfon = {
+        enable = true;
+      };
       sddm = {
         enable = true;
       };
