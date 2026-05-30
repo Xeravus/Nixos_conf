@@ -18,9 +18,18 @@
         streamcontroller
       ];
     };
-    programs.streamdeck-ui = {
-      enable = true;
-      autoStart = true; # optional
+    programs = {
+      streamdeck-ui = {
+        enable = true;
+        autoStart = true; # optional
+      };
+    };
+    services = {
+      udev = {
+        extraRules = ''
+          SUBSYSTEM=="usb", ATTR{idVendor}=="1500", ATTR{idProduct}=="3001", MODE="0666", GROUP="plugdev"
+        '';
+      };
     };
   };
 }
