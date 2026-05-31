@@ -6,17 +6,16 @@
 }: {
   options = {
     xanterella = {
-      gparted = {
-        enable = lib.mkEnableOption "Aktiviert gparted";
+      brightnessctl = {
+        enable = lib.mkEnableOption "Aktiviert brightnessctl";
       };
     };
   };
 
-  config = lib.mkIf config.xanterella.gparted.enable {
+  config = lib.mkIf config.xanterella.brightnessctl.enable {
     environment = {
       systemPackages = with pkgs; [
-        gparted
-        parted
+        brightnessctl
       ];
     };
   };

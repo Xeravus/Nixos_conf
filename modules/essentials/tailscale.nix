@@ -1,11 +1,10 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }: let
-  secrets = import "/home/cato/nixos-config/agenix/usb-secrets.nix";
+  secrets = import "/home/cato/xanterella/modules/agenix/usb-secrets.nix";
 in {
   options = {
     xanterella = {
@@ -21,7 +20,7 @@ in {
   config = lib.mkMerge [
     (lib.mkIf config.xanterella.tailscale.enable {
       environment = {
-        systemPackages = with pkgs-unstable; [
+        systemPackages = with pkgs; [
           tailscale
         ];
       };
@@ -47,7 +46,7 @@ in {
     })
     (lib.mkIf config.xanterella.tailscale-installer.enable {
       environment = {
-        systemPackages = with pkgs-unstable; [
+        systemPackages = with pkgs; [
           tailscale
         ];
       };

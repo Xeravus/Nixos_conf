@@ -3,6 +3,7 @@
     ./hyprland
     ./gnome
     ./browser.nix
+    ./brightnessctl.nix
     ./cava.nix
     ./kitty.nix
     ./nix-switcher.nix

@@ -18,6 +18,7 @@
     environment = {
       systemPackages = with pkgs; [
         zsh-powerlevel10k
+        bat
       ];
     };
     users = {
@@ -85,7 +86,7 @@
         '';
         ohMyZsh = {
           enable = true;
-          plugins = ["git"]; # [cite: 55]
+          plugins = ["git"];
         };
       };
     };

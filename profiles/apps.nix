@@ -35,6 +35,9 @@
             enable = true;
           };
         };
+        brightnessctl = {
+          enable = true;
+        };
         fastfetch = {
           enable = true;
         };
@@ -42,6 +45,9 @@
           enable = true;
         };
         nitch = {
+          enable = true;
+        };
+        soomfon = {
           enable = true;
         };
         pomodoro = {

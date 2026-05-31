@@ -6,6 +6,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprpicker.nix
+    ./soomfon.nix
     ./sddm.nix
     ./swww.nix
   ];
